@@ -1,0 +1,21 @@
+html, body {
+	margin: 0px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.block {
+	float: left; 
+	background-color:blue; 
+	background-size: cover;
+	overflow: visible;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+
+.block-row {
+	padding: 0;
+}
