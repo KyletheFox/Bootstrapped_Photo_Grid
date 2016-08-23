@@ -3,7 +3,7 @@ function generateGrid() {
 	var setupJson;	// set up info on how to build grid
 	
 	// Loads settings json from server
-	$.getJSON( "settings.json", function( data ) {  
+	$.getJSON( "settings.json", function(data) {  
 		
 		// ------- Variables -----------------	
 		setupJson = data;		// JSON returned back from settings.json
@@ -14,8 +14,10 @@ function generateGrid() {
 
 		// -------- Logic ----------------------
 
+	
 		// Gets the size of blocks that need to be created
-		dimentions = ($(window).outerWidth() / setupJson.cols);
+		console.log($(document));
+		dimentions = ($(window).outerWidth() / setupJson.cols);		
 
 		// Determines the number of rows needed to fill screen
 		rowsToPrint = Math.ceil($(window).outerHeight()/dimentions);
@@ -30,7 +32,7 @@ function generateGrid() {
 		// --------------------------
 
 		// -------- Start Animations ---------
-
+		//startAnimation(setupJson, rowsToPrint, numberOfPics);
 		// -----------------------------------
 	
 	});	// end $.getJson
@@ -40,6 +42,7 @@ function generateGrid() {
 function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions) {
 	
 	var returnStr = "";		// The string to attach
+	var num = 0;
 
 	$("body").append('<div class="container-fluid">');
 
@@ -50,10 +53,9 @@ function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions) {
 
 		for (var i = 0; i < setupJson.cols; i++) {
 			// Random index picture for background
-			var randomNum = Math.floor(Math.random() * numberOfPics);
-
-			returnStr += '<div id="row-' + j + '-col-' + i + '"class="block" style="height: ' + dimentions + 'px; width: ' + dimentions + 'px; background-image: url(' + setupJson.pictures[randomNum] +'");""></div>';
-		
+			var randomNum = Math.floor(Math.random() * numberOfPics);			
+			returnStr += '<div class="block pic-' +  num + '" id="row-' + j + '-col-' + i + '"class="block" style="height: ' + dimentions + 'px; width: ' + dimentions + 'px; background-image: url(' + setupJson.pictures[randomNum] +');"></div>';
+			num++;
 		}	// end inner for loop
 
 		returnStr += '</div>';
@@ -63,4 +65,36 @@ function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions) {
 
 	$(".container-fluid").append(returnStr);
 	$("body").append('</div>');
+	console.log(rowsToPrint * setupJson.cols);
+	startAnimation(setupJson, rowsToPrint, numberOfPics);
+}
+
+function startAnimation(setupJson, rowsToPrint, numberOfPics) {
+		var blockID;	// Unique Block Indentifier
+		var time;		// Intervals for animation
+
+		console.log(rowsToPrint);
+
+		for (var i = 0; i < setupJson.cols * rowsToPrint; i++) {
+			time = (Math.random() * 15000) + 3000;
+			blockID = '.pic-' + i;
+			//console.log($(blockID));
+			animation(time, blockID, setupJson);
+		}
+}
+
+function animation(time, id, setupJson) {
+
+	setInterval(function() {
+		var imgIndex = Math.floor(Math.random()* setupJson.pictures.length);
+		$(id).fadeOut(2000, function() {
+			$(id).css("background-image", 'url("' + setupJson.pictures[imgIndex] + '")');
+			$(id).fadeIn(2000);
+			//clearInterval(this);
+		});
+	}, time);
+}
+
+function callBlock() {
+	console.log($(".block"));
 }

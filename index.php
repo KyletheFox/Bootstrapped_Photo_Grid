@@ -3,17 +3,21 @@
 <head>
 	<title>nwfnwfev</title>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+
+	<!-- Bootstrap -->
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="Grid-Generator.js"></script>
 
 </head>
 <body>
-	
 	<script type="text/javascript">
 	// TODO - adjust size for thhe screen size changing
-	// TODO - Get picture animations working
 
 		$(document).ready(function() {
 			generateGrid();
