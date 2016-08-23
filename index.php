@@ -17,7 +17,9 @@
 </head>
 <body>
 	<script type="text/javascript">
-	// TODO - adjust size for thhe screen size changing
+	// TODO - Speed up delay
+	// TODO - Figure out how to place in background
+	// TODO - Setup so the grid can be attched to object <div>
 
 		$(document).ready(function() {
 			generateGrid();
