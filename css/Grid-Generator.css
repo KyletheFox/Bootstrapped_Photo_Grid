@@ -1,6 +1,7 @@
 html, body {
 /*	margin: 0px;*/
 	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 
@@ -11,8 +12,10 @@ html, body {
 	overflow: visible;
 }
 
-#photo-grid {
+#photo-grid-container {
 	padding: 0;
+	height: 100%;
+	width: 100%;
 }
 
 

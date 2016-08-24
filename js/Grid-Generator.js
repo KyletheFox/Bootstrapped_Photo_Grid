@@ -21,10 +21,10 @@ function generateGrid(attachTo) {
 		colIndex = bootstrapGridSize(setupJson);
 		
 		// Gets the size of blocks that need to be created
-		dimentions = ($(window).outerWidth() / setupJson.cols[colIndex]);		
+		dimentions = ($(attachDiv)[0].clientWidth / setupJson.cols[colIndex]);		
 
 		// Determines the number of rows needed to fill screen
-		rowsToPrint = Math.ceil($(window).outerHeight()/dimentions);
+		rowsToPrint = Math.ceil($(attachDiv)[0].clientHeight/dimentions);
 
 		// Gets the number of pictures loaded in from settings.json
 		numberOfPics = setupJson.pictures.length;
@@ -33,7 +33,7 @@ function generateGrid(attachTo) {
 		// ----- Creating HTML ------
 		DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, attachDiv);
 		// --------------------------
-	
+
 	});	// end $.getJson
 }
 
