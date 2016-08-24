@@ -1,4 +1,4 @@
-**Bootstrapped Photo Grid**
+##Bootstrapped Photo Grid##
 
 *Welcome to my Bootstrapped Photo Grid*
 
