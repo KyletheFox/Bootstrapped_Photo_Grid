@@ -11,7 +11,7 @@
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="Grid-Generator.css">
 	<script type="text/javascript" src="Grid-Generator.js"></script>
 
 </head>
@@ -22,7 +22,7 @@
 	// TODO - Setup so the grid can be attched to object <div>
 
 		$(document).ready(function() {
-			generateGrid();
+			generateGrid($("body"));
     	});	// end $(document).ready()
 	
 	</script>

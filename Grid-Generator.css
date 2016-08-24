@@ -11,7 +11,7 @@ html, body {
 	overflow: visible;
 }
 
-.container-fluid {
+#photo-grid {
 	padding: 0;
 }
 

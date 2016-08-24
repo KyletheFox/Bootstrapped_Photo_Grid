@@ -1,5 +1,6 @@
-function generateGrid() {
+function generateGrid(attachTo) {
 
+	var attachDiv = attachTo
 	var setupJson;	// set up info on how to build grid
 	var colIndex;
 	
@@ -30,25 +31,21 @@ function generateGrid() {
 		// ---------------------------------------
 
 		// ----- Creating HTML ------
-		DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex);
+		DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, attachDiv);
 		// --------------------------
-
-		// -------- Start Animations ---------
-		//startAnimation(setupJson, rowsToPrint, numberOfPics);
-		// -----------------------------------
 	
 	});	// end $.getJson
 }
 
 // Creates HTML to display the grid
-function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex) {
+function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, attachDiv) {
 	
 	var returnStr = "";		// The string to attach
 	var num = 0;
 
-	console.log(colIndex);
+	$(attachDiv).attr("id", "photo-grid");
 
-	$("body").append('<div class="container-fluid">');
+	$(attachDiv).append('<div id="photo-grid-container" class="container-fluid">');
 
 	for (var j = 0; j < rowsToPrint; j++) {
 
@@ -67,8 +64,8 @@ function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex) {
 
 	} //end outer for loop
 
-	$(".container-fluid").append(returnStr);
-	$("body").append('</div>');
+	$("#photo-grid-container").append(returnStr);
+	$(attachDiv).append('</div>');
 	
 	startAnimation(setupJson, rowsToPrint, numberOfPics, colIndex);
 }
@@ -81,7 +78,7 @@ function startAnimation(setupJson, rowsToPrint, numberOfPics, colIndex) {
 		console.log(setupJson.cols[colIndex]);
 
 		for (var i = 0; i < setupJson.cols[colIndex] * rowsToPrint; i++) {
-			time = (Math.random() * 15000) + 3000;
+			time = (Math.random() * setupJson.maxAnimationTime) + setupJson.minAnimationTime;
 			blockID = '.pic-' + i;
 			//console.log($(blockID));
 			animation(time, blockID, setupJson);
