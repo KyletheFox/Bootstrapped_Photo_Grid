@@ -1,8 +1,8 @@
 function generateGrid(attachTo) {
 
-	var attachDiv = attachTo
-	var setupJson;	// set up info on how to build grid
-	var colIndex;
+	var attachDiv = attachTo;	// Selector to attach phot-grid too
+	var setupJson;				// Set up info on how to build grid
+	var colIndex;				// Determins number of columns to display
 	
 	// Loads settings json from server
 	$.getJSON( "settings.json", function(data) {  
@@ -41,22 +41,24 @@ function generateGrid(attachTo) {
 function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, attachDiv) {
 	
 	var returnStr = "";		// The string to attach
-	var num = 0;
+	var num = 0;			// Counter for number of pictures added
 
-	$(attachDiv).attr("id", "photo-grid");
-
+	// Creates header for the bootstrap container for the photo-grid
 	$(attachDiv).append('<div id="photo-grid-container" class="container-fluid">');
 
+	// Loop to create HTML String to insert
 	for (var j = 0; j < rowsToPrint; j++) {
 
 		returnStr += '<div class="row">';
 		returnStr += '<div class="block-row col-xs-12 col-sm-12 col-md-12 col-lg-12">';
 
 		for (var i = 0; i < setupJson.cols[colIndex]; i++) {
+			
 			// Random index picture for background
 			var randomNum = Math.floor(Math.random() * numberOfPics);			
 			returnStr += '<div class="block pic-' +  num + '" id="row-' + j + '-col-' + i + '"class="block" style="height: ' + dimentions + 'px; width: ' + dimentions + 'px; background-image: url(' + setupJson.pictures[randomNum] +');"></div>';
 			num++;
+		
 		}	// end inner for loop
 
 		returnStr += '</div>';
@@ -64,36 +66,45 @@ function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, a
 
 	} //end outer for loop
 
+	// Adds HTML to the DOM
 	$("#photo-grid-container").append(returnStr);
+	
+	// Footer for bootstrap photo-grid container
 	$(attachDiv).append('</div>');
 	
+	// Starts the animaton effects
 	startAnimation(setupJson, rowsToPrint, numberOfPics, colIndex);
 }
 
 // Starts the picture animations
 function startAnimation(setupJson, rowsToPrint, numberOfPics, colIndex) {
+		
 		var blockID;	// Unique Block Indentifier
 		var time;		// Intervals for animation
 
-		console.log(setupJson.cols[colIndex]);
-
+		// Attaches animations to each of the photo-grid blocks
 		for (var i = 0; i < setupJson.cols[colIndex] * rowsToPrint; i++) {
+			
 			time = (Math.random() * setupJson.maxAnimationTime) + setupJson.minAnimationTime;
 			blockID = '.pic-' + i;
-			//console.log($(blockID));
 			animation(time, blockID, setupJson);
+		
 		}
 }
 
+// Sets the animation effect to a specific photo block
 function animation(time, id, setupJson) {
 
 	setInterval(function() {
+		
 		var imgIndex = Math.floor(Math.random()* setupJson.pictures.length);
+		
 		$(id).fadeOut(setupJson.fadeOutSpeed, function() {
 			$(id).css("background-image", 'url("' + setupJson.pictures[imgIndex] + '")');
 			$(id).fadeIn(setupJson.fadeInSpeed);
 			//clearInterval(this);
 		});
+
 	}, time);
 }
 
@@ -113,7 +124,6 @@ function bootstrapGridSize(setupJson) {
 	} else {	// width >= 1200
 		index = 3;
 	}
-	console.log(width);
-	console.log(index);
+
 	return index;
 }
