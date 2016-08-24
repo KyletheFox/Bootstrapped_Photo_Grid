@@ -1,5 +1,5 @@
-<center>**Bootstrapped Photo Grid**
-*Welcome to my Bootstrapped Photo Grid*</center>
+**Bootstrapped Photo Grid**
+*Welcome to my Bootstrapped Photo Grid*
 
 **About:**
 This program creates an awesome photo grid effect that can be easily added to your website. The program uses jQuery and javascript to dynamically create a bootstrap container based off of the settings.json file and apply animations to each item inside the container. It produces an attractive photo grid with a collection of images located inside your website.
