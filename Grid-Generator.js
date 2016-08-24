@@ -56,7 +56,12 @@ function DOMinsert(setupJson, rowsToPrint, numberOfPics, dimentions, colIndex, a
 			
 			// Random index picture for background
 			var randomNum = Math.floor(Math.random() * numberOfPics);			
-			returnStr += '<div class="block pic-' +  num + '" id="row-' + j + '-col-' + i + '"class="block" style="height: ' + dimentions + 'px; width: ' + dimentions + 'px; background-image: url(' + setupJson.pictures[randomNum] +');"></div>';
+			returnStr += '<div class="block pic-' +  num + 
+				'" id="row-' + j + '-col-' + i + 
+				'"class="block" style="height: ' + dimentions + 
+				'px; width: ' + dimentions + 
+				'px; background-image: url(' + setupJson.pictures[randomNum] +
+				');"></div>';
 			num++;
 		
 		}	// end inner for loop

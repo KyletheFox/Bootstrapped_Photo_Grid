@@ -1,9 +1,11 @@
 {
-	"cols": [ 4, 6, 15, 36 ],
+	"cols": [ 4, 6, 12, 18 ],
 	"fadeInSpeed": 2000,
 	"fadeOutSpeed": 2000,
 	"minAnimationTime": 2000,
 	"maxAnimationTime": 7000,
+	
+
 	"pictures": [
 		"img/autism-walk.jpg",
 		"img/beach-race.jpeg",
