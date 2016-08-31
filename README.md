@@ -1,6 +1,5 @@
-
-<center>**Bootstrapped Photo Grid**
-*Welcome to my Bootstrapped Photo Grid*</center>
+#Bootstrapped Photo Grid#
+*Welcome to my Bootstrapped Photo Grid*
 
 **About:**
 This program creates an awesome photo grid effect that can be easily added to your website. The program uses jQuery and javascript to dynamically create a bootstrap container based off of the settings.json file and apply animations to each item inside the container. It produces an attractive photo grid with a collection of images located inside your website.
@@ -8,7 +7,7 @@ This program creates an awesome photo grid effect that can be easily added to yo
 <center>![Bootstrapped Photo Grid](http://kyle-oneill.com/markdownBootstrap.gif) </center>
 
 **Warnings:**
-The Bootsrapped Photo Grid is resource heavy especially with a lot of images. I do not recommend using more than 40 columns to display in any of the options in the settings.json file.  Less columns = Less Resources. I also don't recommend using a large number of pictures. Probably less than 20 pictures. With throttling on @ 4G, there was a significant increase in upload times.
+The Bootsrapped Photo Grid can be resource heavy with a lot of large images. I recommend keeping all the images to the smallest size possible. This helps keeps program running lean and fast.  
 
 **Tutorial:**
 This is a very simple effect to use. All you need to do is pass a div selector to the function and you are good to go
@@ -19,7 +18,7 @@ The function call is:
 
 Whatever selector that is passed as an argument MUST have a defined width or height. The Javascript uses the height and width of the selector and creates the grid based on those parameters. If the div does NOT have sizes then nothing will be displayed.
 
-Two depencecies of this project is Bootstrap and jQuery. These must be somehow referenced in the project. I just used the CDN's in my example page.
+Two depencecies of this project is Bootstrap and jQuery. These must be somehow referenced in the project.
 
 	<!-- jQuery -->
 	https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
